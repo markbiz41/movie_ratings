@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Movies</h1>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Admin</th>
+      <th>Avg User Rating</th>
+      <th>Plot</th>
+      <th>Release year</th>
+      <th>Poster image</th>
+      <th>Rating</th>
+      <th>Rotten tomato link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.person.try(:name) %></td>
+        <td><%= movie.avg_rating %></td>
+        <td><%= movie.plot %></td>
+        <td><%= movie.release_year %></td>
+        <td><%= movie.poster_image %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.rotten_tomato_link %></td>
+        <td><%= link_to 'Show', movie %></td>
+        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Movie', new_movie_path, class: "btn btn-info" %>
