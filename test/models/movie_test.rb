@@ -12,6 +12,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  person_id          :integer
+#  movie_poster       :string
 #
 
 require 'test_helper'

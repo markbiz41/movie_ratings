@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def hello
     @name = params[:name]
+    console
   end
 
   def index
@@ -16,5 +17,6 @@ class WelcomeController < ApplicationController
 
     @date = Date.today
     @movie = @movies[0]
+    #console
   end
 end

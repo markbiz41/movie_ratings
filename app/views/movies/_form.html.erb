@@ -1,4 +1,4 @@
-<%= form_for(@movie) do |f| %>
+<%= form_for(@movie, :html => {:multipart => true}) do |f| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -10,6 +10,14 @@
       </ul>
     </div>
   <% end %>
+  <%= image_tag(@movie.movie_poster.thumb.url) if @movie.movie_poster? %>
+  <div class="field">
+    <%= f.label :movie_poster %>
+    <%= f.file_field :movie_poster %>
+    <p>or, enter a url...</p>
+    <%= f.text_field :remote_movie_poster_url %>
+    <%= f.hidden_field :movie_poster_cache %>
+  </div>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

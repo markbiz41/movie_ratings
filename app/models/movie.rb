@@ -12,9 +12,13 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  person_id          :integer
+#  movie_poster       :string
 #
 
 class Movie < ActiveRecord::Base
+  # Carrierwave
+  mount_uploader :movie_poster, MoviePosterUploader
+
   # Associations
   belongs_to :person
   has_many :movie_ratings, dependent: :destroy
@@ -24,7 +28,7 @@ class Movie < ActiveRecord::Base
   validates :release_year, numericality: {greater_than: 1900}
   validates :rating, inclusion: { in: %w(G PG PG-13 R)}
   validates :title, uniqueness: true
-  
+
   #Methods
 
   def avg_rating

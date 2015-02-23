@@ -5,6 +5,7 @@
 <table class="table table-hover table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Admin</th>
       <th>Avg User Rating</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
+        <td><%= image_tag movie.movie_poster.thumb.url %></td>
         <td><%= movie.title %></td>
         <td><%= movie.person.try(:name) %></td>
         <td><%= movie.avg_rating %></td>
