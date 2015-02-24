@@ -16,17 +16,21 @@
 #
 
 class Movie < ActiveRecord::Base
+  RATINGS = %w(G PG PG-13 R)
+
   # Carrierwave
   mount_uploader :movie_poster, MoviePosterUploader
 
   # Associations
   belongs_to :person
   has_many :movie_ratings, dependent: :destroy
+  has_many :genreizations
+  has_many :genres, through: :genreizations
 
   # Validations
   validates :title, presence: true
   validates :release_year, numericality: {greater_than: 1900}
-  validates :rating, inclusion: { in: %w(G PG PG-13 R)}
+  validates :rating, inclusion: { in: RATINGS}
   validates :title, uniqueness: true
 
   #Methods

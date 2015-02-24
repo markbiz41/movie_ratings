@@ -17,3 +17,6 @@
 /tmp
 
 /public/uploads
+.env
+
+/vendor/ruby/*/**

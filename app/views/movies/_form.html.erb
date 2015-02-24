@@ -14,9 +14,14 @@
   <div class="field">
     <%= f.label :movie_poster %>
     <%= f.file_field :movie_poster %>
-    <p>or, enter a url...</p>
-    <%= f.text_field :remote_movie_poster_url %>
     <%= f.hidden_field :movie_poster_cache %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag "movie[genre_ids][]", nil %>
+    <% Genre.all.each do |genre| %>
+      <%= check_box_tag "movie[genre_ids][]", genre.id, @movie.genre_ids.include?(genre.id), id: dom_id(genre) %>
+      <%= label_tag dom_id(genre), genre.name %><br>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
