@@ -1,23 +1,20 @@
 # == Schema Information
 #
-# Table name: movie_ratings
+# Table name: users
 #
 #  id         :integer          not null, primary key
-#  movie_id   :integer
-#  rating     :integer
+#  name       :string
+#  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  person_id: 
-  movie_id: 
-  rating: 1
+  name: MyString
+  email: MyString
 
 two:
-  person_id: 
-  movie_id: 
-  rating: 1
+  name: MyString
+  email: MyString

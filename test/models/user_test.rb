@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: movie_ratings
+# Table name: users
 #
 #  id         :integer          not null, primary key
-#  movie_id   :integer
-#  rating     :integer
+#  name       :string
+#  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
 require 'test_helper'
 
-class MovieRatingTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
