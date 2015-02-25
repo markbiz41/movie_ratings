@@ -11,6 +11,7 @@
       <th>Plot</th>
       <th>Release year</th>
       <th>Rating</th>
+      <th>Genres</th>
       <th colspan="4">Actions</th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= movie.plot %></td>
         <td><%= movie.release_year %></td>
         <td><%= movie.rating %></td>
+        <td><%= movie.genres.collect{|g| g.name}.join ", " %></td>
         <td><%= link_to "Rate This Movie", new_movie_rating_path(movie_id: movie.id) %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
