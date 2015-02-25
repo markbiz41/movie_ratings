@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :movies, :movie_ratings
 
   root 'welcome#index'

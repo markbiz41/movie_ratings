@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
 gem "mini_magick"
 gem "fog"
