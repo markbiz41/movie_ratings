@@ -10,9 +10,7 @@
       <th>Avg User Rating</th>
       <th>Plot</th>
       <th>Release year</th>
-      <th>Poster image</th>
       <th>Rating</th>
-      <th>Rotten tomato link</th>
       <th colspan="4">Actions</th>
     </tr>
   </thead>
@@ -25,9 +23,7 @@
         <td><%= movie.avg_rating %></td>
         <td><%= movie.plot %></td>
         <td><%= movie.release_year %></td>
-        <td><%= movie.poster_image %></td>
         <td><%= movie.rating %></td>
-        <td><%= movie.rotten_tomato_link %></td>
         <td><%= link_to "Rate This Movie", new_movie_rating_path(movie_id: movie.id) %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
