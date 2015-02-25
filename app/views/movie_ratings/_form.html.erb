@@ -1,0 +1,68 @@
+<%= form_for(@movie_rating) do |f| %>
+  <% if @movie_rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie_rating.errors.count, "error") %> prohibited this movie_rating from being saved:</h2>
+
+      <ul>
+      <% @movie_rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :movie_id %><br>
+
+    <% if @movie_rating.movie_id %>
+      <%= f.hidden_field :movie_id %>
+      <%= image_tag @movie_rating.movie.movie_poster.url(:thumb) %><br/>
+      <%= @movie_rating.movie.title %>
+    <% else %>
+      <%= f.select :movie_id, @movies %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rating %>
+  </div>
+
+  <div class="radio-inline">
+    <%= f.label :rating do %>
+      <%= f.radio_button :rating, "1" %>
+      1
+    <% end %>
+  </div>
+
+  <div class="radio-inline">
+    <%= f.label :rating do %>
+      <%= f.radio_button :rating, "2" %>
+      2
+    <% end %>
+  </div>
+
+  <div class="radio-inline">
+    <%= f.label :rating do %>
+      <%= f.radio_button :rating, "3" %>
+      3
+    <% end %>
+  </div>
+
+  <div class="radio-inline">
+    <%= f.label :rating do %>
+      <%= f.radio_button :rating, "4" %>
+      4
+    <% end %>
+  </div>
+
+  <div class="radio-inline">
+    <%= f.label :rating do %>
+      <%= f.radio_button :rating, "5" %>
+      5
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

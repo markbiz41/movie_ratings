@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224184137) do
+ActiveRecord::Schema.define(version: 20150225142057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20150224184137) do
   end
 
   create_table "movie_ratings", force: :cascade do |t|
-    t.integer  "person_id"
     t.integer  "movie_id"
     t.integer  "rating"
     t.datetime "created_at", null: false
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(version: 20150224184137) do
   end
 
   add_index "movie_ratings", ["movie_id"], name: "index_movie_ratings_on_movie_id", using: :btree
-  add_index "movie_ratings", ["person_id"], name: "index_movie_ratings_on_person_id", using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -67,22 +65,10 @@ ActiveRecord::Schema.define(version: 20150224184137) do
     t.string   "rotten_tomato_link"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "person_id"
     t.string   "movie_poster"
-  end
-
-  add_index "movies", ["person_id"], name: "index_movies_on_person_id", using: :btree
-
-  create_table "people", force: :cascade do |t|
-    t.string   "name"
-    t.date     "birthdate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "genreizations", "genres"
   add_foreign_key "genreizations", "movies"
   add_foreign_key "movie_ratings", "movies"
-  add_foreign_key "movie_ratings", "people"
-  add_foreign_key "movies", "people"
 end

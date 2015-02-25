@@ -11,7 +11,6 @@
 #  rotten_tomato_link :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  person_id          :integer
 #  movie_poster       :string
 #
 
@@ -22,9 +21,8 @@ class Movie < ActiveRecord::Base
   mount_uploader :movie_poster, MoviePosterUploader
 
   # Associations
-  belongs_to :person
   has_many :movie_ratings, dependent: :destroy
-  has_many :genreizations
+  has_many :genreizations, dependent: :destroy
   has_many :genres, through: :genreizations
 
   # Validations
