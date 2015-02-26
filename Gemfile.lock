@@ -314,6 +314,7 @@ DEPENDENCIES
   fog
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   pg
   rails (= 4.2.0)
