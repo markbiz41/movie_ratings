@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  resources :movies, :movie_ratings
+  resources :movies do
+    get 'search', on: :collection
+  end
+
+
+  resources :movie_ratings
 
   root 'welcome#index'
   get 'welcome/hello'

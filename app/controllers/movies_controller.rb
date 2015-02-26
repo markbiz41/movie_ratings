@@ -1,6 +1,12 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @search = params[:q]
+    @movies = Movie.where("title like ?", "%#{@search}%").page(params[:page]).per(15)
+    render 'movies/index'
+  end
+
   # GET /movies
   # GET /movies.json
   def index
