@@ -5,13 +5,17 @@ class ApplicationController < ActionController::Base
 
   before_action :current_user
 
-  def current_user
-    @current_user = User.find_by(email: "guest@guest.com")
+  def authenticate_admin_user!
+    redirect_to root_path if !signed_in? || !current_user.admin?
   end
 
-  helper_method :signed_in?
+  helper_method :signed_in?, :current_user
+
+  def current_user
+    @current_user ||= User.find_by(email: "guest@guest.com")
+  end
 
   def signed_in?
-    return true if @current_user
+    return true if current_user
   end
 end

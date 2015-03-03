@@ -4,6 +4,11 @@ ActiveAdmin.register Movie do
   filter :title
   filter :genres
 
+  scope :rated_r
+  scope :rated_g
+  scope :rated_pg
+  scope :rated_pg13
+
   permit_params :title, :plot, :release_year, :poster_image, :rating, :rotten_tomato_link, :movie_poster, genre_ids: []
 
   form do |f|
@@ -16,7 +21,7 @@ ActiveAdmin.register Movie do
     end
     actions
   end
-  
+
   index as: :grid do |movie|
     link_to image_tag(movie.movie_poster.url(:thumb)), admin_movie_path(movie)
   end

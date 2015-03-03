@@ -15,6 +15,12 @@
 class Movie < ActiveRecord::Base
   RATINGS = %w(G PG PG-13 R)
 
+  # Scopes
+  scope :rated_r, -> {where(rating: 'R').limit(3)}
+  scope :rated_g, -> {where(rating: 'G')}
+  scope :rated_pg, -> {where(rating: 'PG')}
+  scope :rated_pg13, -> {where(rating: 'PG-13')}
+
   # Carrierwave
   mount_uploader :movie_poster, MoviePosterUploader
 

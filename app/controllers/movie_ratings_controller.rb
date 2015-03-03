@@ -5,7 +5,8 @@ class MovieRatingsController < ApplicationController
   # GET /movie_ratings
   # GET /movie_ratings.json
   def index
-    @movie_ratings = MovieRating.where(user: @current_user)
+    #@movie_ratings = MovieRating.where(user: current_user)
+    @movie_ratings = MovieRating.for_user(current_user)
   end
 
   # GET /movie_ratings/1
@@ -27,7 +28,7 @@ class MovieRatingsController < ApplicationController
   # POST /movie_ratings.json
   def create
     @movie_rating = MovieRating.new(movie_rating_params)
-    @movie_rating.user = @current_user
+    @movie_rating.user = current_user
 
     respond_to do |format|
       if @movie_rating.save
@@ -71,7 +72,8 @@ class MovieRatingsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_movie_rating
-      @movie_rating = MovieRating.find(params[:id])
+      @movie_rating = MovieRating.for_user(current_user).find_by(id: params[:id])
+      redirect_to root_path, flash: {warning: "No such movie rating."} if @movie_rating.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
