@@ -1,5 +1,15 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:like, :unlike, :show, :edit, :update, :destroy]
+
+  def like
+    MovieFavorite.find_or_create_by(user: current_user, movie: @movie)
+    redirect_to @movie
+  end
+
+  def unlike
+    MovieFavorite.find_by(user: current_user, movie: @movie).destroy
+    redirect_to @movie
+  end
 
   def search
     @search = params[:q]
