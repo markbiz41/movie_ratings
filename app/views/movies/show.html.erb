@@ -20,5 +20,15 @@
   <%= @movie.rating %>
 </p>
 
+<% if @movie.fav_by_user?(current_user) %>
+  <%= form_tag(unfavorite_movie_path(@movie), method: 'delete') do %>
+    <%= submit_tag "Unfavorite" %>
+  <% end %>
+<% else %>
+  <%= form_tag favorite_movie_path(@movie) do %>
+    <%= submit_tag "Favorite" %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

@@ -10,6 +10,12 @@ class AccountController < ApplicationController
     end
   end
 
+  def favorites
+    @movies = current_user.fav_movies.page(params[:page]).per(15)
+    @mtype = "Favorite"
+    render "movies/index"
+  end
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
