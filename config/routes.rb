@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'account/edit'
   patch 'account/update'
+  get 'account/index'
 
   ActiveAdmin.routes(self)
   resources :movies do
