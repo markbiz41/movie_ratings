@@ -13,6 +13,16 @@ class MoviesController < ApplicationController
     @movies = Movie.page(params[:page]).per(15)
   end
 
+  def favorite
+    MovieFavorite.find_or_create_by(user: current_user, movie: @movie)
+    redirect_to @movie
+  end
+
+  def unfavorite
+    MovieFavorite.find_by(user: current_user, movie: @movie).destroy
+    redirect_to @movie
+  end
+  
   # GET /movies/1
   # GET /movies/1.json
   def show
