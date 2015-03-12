@@ -28,7 +28,7 @@ class Movie < ActiveRecord::Base
   has_many :movie_ratings, dependent: :destroy
   has_many :genreizations, dependent: :destroy
   has_many :genres, through: :genreizations
-  has_many :movie_favorites, dependent: destroy
+  has_many :movie_favorites, dependent: :destroy
 
 
   # Validations
