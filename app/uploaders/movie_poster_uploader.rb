@@ -3,7 +3,7 @@
 class MoviePosterUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :fog
+  storage :file
 
   version :thumb do
     process :resize_to_fill => [100,100]
