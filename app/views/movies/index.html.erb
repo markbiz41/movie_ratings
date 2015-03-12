@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th></th>
+      <th></th>
       <th>Title</th>
       <th>Avg User Rating</th>
       <th>Plot</th>
@@ -16,7 +17,7 @@
       <th>Rating</th>
       <th>User Ratings Count</th>
       <th>Genres</th>
-      <th>Favorites</th>
+      <th>Favorite</th>
       <th colspan="3">Actions</th>
 
     </tr>
@@ -25,6 +26,11 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
+        <td>
+          <% if movie.favorited_by_user?(current_user) %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <% end %>
+        </td>
         <td><%= image_tag movie.movie_poster.thumb.url %></td>
         <td><%= link_to movie.title, movie %></td>
         <td><%= movie.avg_rating %></td>
@@ -33,10 +39,8 @@
         <td><%= movie.rating %></td>
         <td><%= movie.movie_ratings.size %></td>
         <td><%= movie.genres.collect{|g| g.name}.join ", " %></td>
-
         <td>
           <% if movie.favorited_by_user?(current_user) %>
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
             <%= form_tag(unfavorite_movie_path(movie), method: 'delete') do %>
               <%= submit_tag "Unfavorite" %>
             <% end %>
@@ -46,8 +50,6 @@
             <% end %>
           <% end %>
         </td>
-
-
         <td><%= link_to "Rate This Movie", new_movie_rating_path(movie_id: movie.id) %></td>
         <td>
           <% if current_user.admin? %>
