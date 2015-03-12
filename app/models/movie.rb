@@ -28,6 +28,7 @@ class Movie < ActiveRecord::Base
   has_many :movie_ratings, dependent: :destroy
   has_many :genreizations, dependent: :destroy
   has_many :genres, through: :genreizations
+  has_many :movie_favorites, dependent: :destroy
 
   # Validations
   validates :title, presence: true
@@ -40,4 +41,9 @@ class Movie < ActiveRecord::Base
   def avg_rating
     (movie_ratings.sum(:rating) / movie_ratings.count) if movie_ratings.any?
   end
+
+  def favorited_by_user?(user)
+    movie_favorites.find_by(user: user)
+  end
+
 end
