@@ -32,7 +32,7 @@
     <% end %>
 
 
-    <h3>Welcome <% if signed_in? %><%= @current_user.name %>!<% end %></h3>
+    <h3>Welcome <% if signed_in? %><%= link_to @current_user.name, account_edit_path %>!<% end %></h3>
     <ul class="nav nav-pills">
       <li role="presentation"><%= link_to "Movie Database", movies_path %></li>
       <li role="presentation"><%= link_to "My Ratings", movie_ratings_path %></li>

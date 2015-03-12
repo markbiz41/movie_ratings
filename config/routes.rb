@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'account/edit'
+  patch 'account/update'
+
   ActiveAdmin.routes(self)
   resources :movies do
     get 'search', on: :collection
   end
-
 
   resources :movie_ratings
 
