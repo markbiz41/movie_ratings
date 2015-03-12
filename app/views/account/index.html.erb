@@ -1,0 +1,33 @@
+<h1>Listing Favorite Movies</h1>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Avg User Rating</th>
+      <th>Plot</th>
+      <th>Release year</th>
+      <th>Rating</th>
+      <th>User Ratings Count</th>
+      <th>Genres</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movie_favorites.each do |fav| %>
+      <tr>
+        <td><%= image_tag fav.movie.movie_poster.thumb.url %></td>
+        <td><%= link_to fav.movie.title, fav.movie %></td>
+        <td><%= fav.movie.avg_rating %></td>
+        <td><%= fav.movie.plot %></td>
+        <td><%= fav.movie.release_year %></td>
+        <td><%= fav.movie.rating %></td>
+        <td><%= fav.movie.movie_ratings.size %></td>
+        <td><%= fav.movie.genres.collect{|g| g.name}.join ", " %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @movies %>
