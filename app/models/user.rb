@@ -12,4 +12,5 @@
 
 class User < ActiveRecord::Base
   has_many :movie_ratings
+  has_many :movie_favorites, dependent: destroy
 end
