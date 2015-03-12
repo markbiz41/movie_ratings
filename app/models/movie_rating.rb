@@ -11,7 +11,7 @@
 #
 
 class MovieRating < ActiveRecord::Base
-  belongs_to :movie
+  belongs_to :movie, counter_cache: true
   belongs_to :user
 
   validates :movie_id, presence: true
