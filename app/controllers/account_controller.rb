@@ -1,7 +1,8 @@
 class AccountController < ApplicationController
 
-  def show
+  def index
     @movie_favorites = MovieFavorite.all
+    @movies = MovieFavorite.page(params[:page]).per(15)
   end
 
 
