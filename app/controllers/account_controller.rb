@@ -1,10 +1,10 @@
 class AccountController < ApplicationController
 
-  def index
-    @movie_favorites = MovieFavorite.all
-    @movies = MovieFavorite.page(params[:page]).per(15)
-  end
 
+  def index
+    @movie_favorites = MovieFavorite.where(user: current_user)
+    @movies = @movie_favorites.page(params[:page]).per(15)
+  end
 
   def edit
   end
