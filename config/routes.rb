@@ -3,9 +3,16 @@ Rails.application.routes.draw do
   patch 'account/update'
 
   ActiveAdmin.routes(self)
+
   resources :movies do
     get 'search', on: :collection
+    post 'favorite'
+    delete 'unfavorite'
   end
+
+  get 'account/favs'
+
+
 
   resources :movie_ratings
 

@@ -2,6 +2,10 @@ class AccountController < ApplicationController
   def edit
   end
 
+  def favs
+    @movies = @current_user.movie_favorites.all
+  end
+
   def update
     if current_user.update(user_params)
       redirect_to account_edit_path, notice: 'Your account has been updated.'
@@ -14,7 +18,7 @@ class AccountController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :movie_favorites)
   end
 
 end

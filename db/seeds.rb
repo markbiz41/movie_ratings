@@ -5,6 +5,8 @@ end
 
 User.where(name: "Guest", email: "guest@guest.com").first_or_create
 
+
+
 def random_select(array)
   array_source = array.dup
   results = []
@@ -28,4 +30,3 @@ if Movie.count < 10
                 remote_movie_poster_url: "http://lorempixel.com/485/720/abstract/")
   end
 end
-
