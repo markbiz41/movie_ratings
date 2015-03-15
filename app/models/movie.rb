@@ -38,6 +38,10 @@ class Movie < ActiveRecord::Base
 
   #Methods
 
+  def faved(user)
+    movie_favorites.find_by(user: user)
+  end
+
   def avg_rating
     (movie_ratings.sum(:rating) / movie_ratings.count) if movie_ratings.any?
   end
