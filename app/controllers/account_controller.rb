@@ -1,4 +1,8 @@
 class AccountController < ApplicationController
+  def index
+    @movie_favorites = MovieFavorites.all
+  end
+
   def edit
   end
 
