@@ -14,6 +14,7 @@
       <th>Plot</th>
       <th>Release year</th>
       <th>Rating</th>
+      <th>Favorite</th>
       <th>User Ratings Count</th>
       <th>Genres</th>
       <th colspan="3">Actions</th>
@@ -29,6 +30,17 @@
         <td><%= movie.plot %></td>
         <td><%= movie.release_year %></td>
         <td><%= movie.rating %></td>
+        <td>
+          <% if movie.faved(current_user) %>
+            <%= form_tag(unfavorite_movie_path(movie), method: 'delete') do %>
+              <%= submit_tag "Unfavorite" %>
+            <% end %>
+          <% else %>
+            <%= form_tag favorite_movie_path(movie) do %>
+              <%= submit_tag "Favorite" %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= movie.movie_ratings.size %></td>
         <td><%= movie.genres.collect{|g| g.name}.join ", " %></td>
         <td><%= link_to "Rate This Movie", new_movie_rating_path(movie_id: movie.id) %></td>
