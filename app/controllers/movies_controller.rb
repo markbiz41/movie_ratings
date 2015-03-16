@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:favorite, :unfavorite, :show, :edit, :update, :destroy]
 
   def search
     @search = params[:q]
@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
     MovieFavorite.find_by(user: current_user, movie: @movie).destroy
     redirect_to @movie
   end
-  
+
   # GET /movies/1
   # GET /movies/1.json
   def show
