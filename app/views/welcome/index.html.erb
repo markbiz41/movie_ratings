@@ -1,4 +1,4 @@
-<h1 class="text-uppercase"><%= @movie[0] %></h1>
+<h1 class="text-uppercase"><%= @movie[0] %> <span><%= @date.strftime("%b %d, %Y") %></span></h1>
 
 <div class="row">
   <div class="col-md-4"><%= image_tag @movie[2], class: "img-thumbnail" %></div>
