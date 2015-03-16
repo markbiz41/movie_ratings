@@ -1,0 +1,34 @@
+
+body {
+  @include linear-gradient($main-bg-color, darken($main-bg-color, 10%));
+}
+
+h1 {
+  color: #e29b20;
+  span {
+    font-size: .6em;
+
+    b {
+      font-weight: bold;
+      span {
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.lead {
+  background-color: darken($main-bg-color, 10%);
+  padding: 4px;
+  @include border-radius(8px);
+}
+
+.message, .success, .error, .warning {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}

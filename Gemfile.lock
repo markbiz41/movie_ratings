@@ -306,6 +306,7 @@ DEPENDENCIES
   activeadmin!
   annotate (~> 2.6.5)
   awesome_print
+  bourbon
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
