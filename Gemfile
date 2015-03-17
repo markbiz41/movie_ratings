@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+ruby '2.2.0'
+
 gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
 gem "mini_magick"
@@ -16,7 +19,11 @@ gem 'kaminari'
 gem 'bourbon'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'thin'
 
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'quiet_assets'
