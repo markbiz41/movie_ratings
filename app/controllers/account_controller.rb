@@ -3,6 +3,7 @@ class AccountController < ApplicationController
   end
 
   def show
+    @movie_favorites = MovieFavorite.where(user_id: current_user)
   end
 
   def update
@@ -21,3 +22,6 @@ class AccountController < ApplicationController
   end
 
 end
+
+
+
