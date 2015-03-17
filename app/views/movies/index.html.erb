@@ -33,7 +33,7 @@
         <td><%= movie.genres.collect{|g| g.name}.join ", " %></td>
         <td><%= link_to "Rate This Movie", new_movie_rating_path(movie_id: movie.id) %></td>
         <td>
-          <% if movie.is_a_favorite?(movie) %>
+          <% if movie.is_a_favorite(current_user) %>
             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
             <%= form_tag(unfavorite_movie_path(movie), method: 'delete') do %>
                 <%= submit_tag "Unfavorite" %>
