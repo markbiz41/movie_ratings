@@ -15,10 +15,11 @@ gem 'pg'
 gem 'kaminari'
 gem 'bourbon'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 
 group :development, :test do
+  gem 'quiet_assets'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'annotate', '~> 2.6.5'

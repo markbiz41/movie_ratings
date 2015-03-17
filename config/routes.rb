@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'session/signin'
+  delete 'session/signout'
+
   get 'account/edit'
   patch 'account/update'
 
