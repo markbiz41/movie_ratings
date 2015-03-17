@@ -1,4 +1,31 @@
-<h1>List of user's favorites goes here</h1>
-<p>
-  Need to write a block to gather all the favorites
-</p>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>My favorite movies</h1>
+
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Movie</th>
+        <th>Rating</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @movie_favorites.each do |movie_favorite| %>
+          <tr>
+            <td><%= image_tag movie_favorite.movie.movie_poster.thumb.url %></td>
+
+            <td><%= link_to movie_favorite.movie.title, movie_favorite.movie %></td>
+            <td><%= movie_favorite.movie.rating %></td>
+
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
