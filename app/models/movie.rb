@@ -43,8 +43,10 @@ class Movie < ActiveRecord::Base
     (movie_ratings.sum(:rating) / movie_ratings.count) if movie_ratings.any?
   end
 
-  def is_a_favorite?(user)
+  def is_a_favorite(user)
     movie_favorites.find_by(user: user)
   end
 
 end
+
+
