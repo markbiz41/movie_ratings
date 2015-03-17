@@ -3,7 +3,10 @@ class AccountController < ApplicationController
   end
 
   def show
-    @movie_favorites = MovieFavorite.where(user_id: current_user)
+    @movie_favorites = MovieFavorite.where(user: current_user)
+# Alternatively, could use the ID versions:
+#    @movie_favorites = MovieFavorite.where(user_id: current_user.id)
+# Don't mix and match!
   end
 
   def update
@@ -22,6 +25,3 @@ class AccountController < ApplicationController
   end
 
 end
-
-
-
