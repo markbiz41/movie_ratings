@@ -14,7 +14,10 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+#VALIDATIONS
   validates :password, length: { minimum: 8 }
 
+#ASSOCATIONS
   has_many :movie_ratings
+  has_many :movie_favorites, dependent: :destroy
 end
