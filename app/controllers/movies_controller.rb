@@ -1,10 +1,20 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:favorite, :unfavorite, :show, :edit, :update, :destroy]
 
   def search
     @search = params[:q]
     @movies = Movie.where("title like ?", "%#{@search}%").page(params[:page]).per(15)
     render 'movies/index'
+  end
+
+  def favorite
+    MovieFavorite.find_or_create_by(user: current_user, movie: @movie)
+    redirect_to @movie
+  end
+
+  def unfavorite
+    MovieFavorite.find_or_create_by(user: current_user, movie: @movie ).destroy
+    redirect_to @movie
   end
 
   # GET /movies
