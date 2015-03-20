@@ -28,4 +28,3 @@ if Movie.count < 10
                 remote_movie_poster_url: "http://lorempixel.com/485/720/abstract/")
   end
 end
-

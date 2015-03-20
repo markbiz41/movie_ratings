@@ -19,5 +19,5 @@ class MovieRating < ActiveRecord::Base
   validates :user_id, presence: true
 
   scope :for_user, ->(user) {where(user: user)}
-  
+
 end

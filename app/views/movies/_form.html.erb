@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
   <%= image_tag(@movie.movie_poster.thumb.url) if @movie.movie_poster? %>
   <div class="field">
     <%= f.label :movie_poster %>
@@ -42,4 +43,7 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
+  
 <% end %>

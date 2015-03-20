@@ -2,6 +2,10 @@ class AccountController < ApplicationController
   def edit
   end
 
+  def show
+    @movie_favorite = Movie_favorite.all
+  end
+
   def update
     if current_user.update(user_params)
       redirect_to account_edit_path, notice: 'Your account has been updated.'

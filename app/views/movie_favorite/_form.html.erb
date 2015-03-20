@@ -1,0 +1,26 @@
+<%= form_for(@movie_favorite, :html => {:multipart => true}) do |f| %>
+  <% if @movie_favorite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie_favorite.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @movie_favorite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :movie_id %>
+    <%= f.file_field :movie_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.file_field :user_id %>
+    <% end %>
+  </div>
+
+
+<% end %>

@@ -2,9 +2,14 @@ Rails.application.routes.draw do
   get 'account/edit'
   patch 'account/update'
 
+  get 'movie_favorite/index'
+
+
   ActiveAdmin.routes(self)
   resources :movies do
     get 'search', on: :collection
+    post 'favorite', on: :member
+    post 'unfavorite', on: :member
   end
 
   resources :movie_ratings

@@ -12,4 +12,6 @@
 
 class User < ActiveRecord::Base
   has_many :movie_ratings
+  has_many :movie_favorites
+  has_many :movies, :through => :movie_favorites
 end

@@ -1,0 +1,5 @@
+<p id="notice"><%= notice %></p>
+
+<h4><%= @movie_favorite.user.name %> rated <%= @movie_favorite.movie.title %> a </h4>
+<%= link_to 'Edit', edit_movie_favorite_path(@movie_favorite) %> |
+<%= link_to 'Back', movie_favorite_path %>
