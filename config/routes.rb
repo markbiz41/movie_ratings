@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+
   get 'session/signin'
   delete 'session/signout'
   get 'account/show'
+  post 'favorite_movies/show'
 
   get 'account/edit'
   patch 'account/update'
+
+  get 'movie/index'
 
   ActiveAdmin.routes(self)
   resources :movies do
@@ -12,6 +16,18 @@ Rails.application.routes.draw do
   end
 
   resources :movie_ratings
+
+
+  resources :movies do
+    member do
+      post 'favorite'
+      post 'unfavorite'
+    end
+end
+
+
+
+
 
   root 'welcome#index'
   get 'welcome/hello'

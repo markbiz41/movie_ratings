@@ -30,6 +30,7 @@ class Movie < ActiveRecord::Base
   has_many :genreizations, dependent: :destroy
   has_many :genres, through: :genreizations
   has_many :movie_favorites, dependent: :destroy
+  has_many :users, :through => :movie_favorites
 
   # Validations
   validates :title, presence: true

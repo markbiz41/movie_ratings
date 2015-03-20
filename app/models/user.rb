@@ -16,8 +16,10 @@ class User < ActiveRecord::Base
 
 #VALIDATIONS
   validates :password, length: { minimum: 8 }
+  validates :email, length: { minimum: 8 }
 
 #ASSOCATIONS
   has_many :movie_ratings
-  has_many :movie_favorites, dependent: :destroy
+  has_many :movie_favorites
+  has_many :movies, :through => :movie_favorites
 end
