@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317150207) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150322194444) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -27,9 +24,9 @@ ActiveRecord::Schema.define(version: 20150317150207) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "genreizations", force: :cascade do |t|
     t.integer  "movie_id"
@@ -38,14 +35,24 @@ ActiveRecord::Schema.define(version: 20150317150207) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "genreizations", ["genre_id"], name: "index_genreizations_on_genre_id", using: :btree
-  add_index "genreizations", ["movie_id"], name: "index_genreizations_on_movie_id", using: :btree
+  add_index "genreizations", ["genre_id"], name: "index_genreizations_on_genre_id"
+  add_index "genreizations", ["movie_id"], name: "index_genreizations_on_movie_id"
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "movie_favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "movie_favorites", ["movie_id"], name: "index_movie_favorites_on_movie_id"
+  add_index "movie_favorites", ["user_id"], name: "index_movie_favorites_on_user_id"
 
   create_table "movie_ratings", force: :cascade do |t|
     t.integer  "movie_id"
@@ -55,8 +62,8 @@ ActiveRecord::Schema.define(version: 20150317150207) do
     t.integer  "user_id"
   end
 
-  add_index "movie_ratings", ["movie_id"], name: "index_movie_ratings_on_movie_id", using: :btree
-  add_index "movie_ratings", ["user_id"], name: "index_movie_ratings_on_user_id", using: :btree
+  add_index "movie_ratings", ["movie_id"], name: "index_movie_ratings_on_movie_id"
+  add_index "movie_ratings", ["user_id"], name: "index_movie_ratings_on_user_id"
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -78,8 +85,4 @@ ActiveRecord::Schema.define(version: 20150317150207) do
     t.string   "password_digest"
   end
 
-  add_foreign_key "genreizations", "genres"
-  add_foreign_key "genreizations", "movies"
-  add_foreign_key "movie_ratings", "movies"
-  add_foreign_key "movie_ratings", "users"
 end

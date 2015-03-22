@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
+  post 'session/signup'
   post 'session/signin'
   delete 'session/signout'
 
+  get 'account/favorites'
   get 'account/edit'
   patch 'account/update'
 
   ActiveAdmin.routes(self)
   resources :movies do
     get 'search', on: :collection
+    member do
+      post 'favorite'
+      post 'unfavorite'
+    end
   end
 
   resources :movie_ratings

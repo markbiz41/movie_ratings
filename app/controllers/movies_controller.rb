@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def search
     @search = params[:q]
@@ -63,6 +63,22 @@ class MoviesController < ApplicationController
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def favorite
+    current_user.favorite_movies << @movie
+    respond_to do |format|
+      format.html { redirect_to @movie, notice: 'Movie was successfully favorited.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def unfavorite
+    current_user.favorite_movies.delete(@movie)
+    respond_to do |format|
+      format.html { redirect_to @movie, notice: 'Movie was successfully unfavorited.' }
       format.json { head :no_content }
     end
   end

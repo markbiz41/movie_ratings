@@ -10,6 +10,10 @@ class AccountController < ApplicationController
     end
   end
 
+  def favorites
+    @movies = current_user.favorite_movies
+  end
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

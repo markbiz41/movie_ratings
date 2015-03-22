@@ -16,4 +16,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 8 }
 
   has_many :movie_ratings
+  has_many :movie_favorites
+  has_many :favorite_movies, through: :movie_favorites, source: :movie
+
 end
